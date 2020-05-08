@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AppModule"
+  Version="12.1.3.10.47"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true">
+  <ViewUsage
+    Name="ClassroomsView1"
+    ViewObjectName="model.view.ClassroomsView"/>
+  <ViewUsage
+    Name="SchoolInformationView1"
+    ViewObjectName="model.view.SchoolInformationView"/>
+  <ViewUsage
+    Name="StudentClassView1"
+    ViewObjectName="model.view.StudentClassView"/>
+  <ViewUsage
+    Name="StudentResultView1"
+    ViewObjectName="model.view.StudentResultView"/>
+  <ViewUsage
+    Name="TeacherClassesView1"
+    ViewObjectName="model.view.TeacherClassesView"/>
+  <ViewUsage
+    Name="TeachersView1"
+    ViewObjectName="model.view.TeachersView"/>
+  <ViewUsage
+    Name="StudentClassView2"
+    ViewObjectName="model.view.StudentClassView"/>
+  <ViewUsage
+    Name="TeacherClassesView2"
+    ViewObjectName="model.view.TeacherClassesView"/>
+  <ViewUsage
+    Name="StudentsView1"
+    ViewObjectName="model.view.StudentsView"/>
+  <ViewLinkUsage
+    Name="ClassLinkStudent1"
+    ViewLinkObjectName="model.view.ClassLinkStudent"
+    SrcViewUsageName="model.AppModule.ClassroomsView1"
+    DstViewUsageName="model.AppModule.StudentClassView2"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="TeacherLinkClasses1"
+    ViewLinkObjectName="model.view.TeacherLinkClasses"
+    SrcViewUsageName="model.AppModule.TeachersView1"
+    DstViewUsageName="model.AppModule.TeacherClassesView2"
+    Reversed="false"/>
+</AppModule>

@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:document title="School || Search student " id="d1">
+    <af:messages id="m1"/>
+    <af:form id="f1">
+      <af:pageTemplate viewId="/schoolTemplateDef.jsf" id="pt1">
+        <f:facet name="body">
+          <af:panelGroupLayout layout="vertical" id="pgl1">
+            <af:panelHeader text="Учні" id="ph1">
+              <af:query id="qryId1" headerText="Пошук" disclosed="true"
+                        value="#{bindings.SearchStudentsViewCriteriaQuery.queryDescriptor}"
+                        model="#{bindings.SearchStudentsViewCriteriaQuery.queryModel}"
+                        queryListener="#{bindings.SearchStudentsViewCriteriaQuery.processQuery}"
+                        queryOperationListener="#{bindings.SearchStudentsViewCriteriaQuery.processQueryOperation}"
+                        resultComponentId="::pc1:resId1" rows="2" maxColumns="4" modeChangeVisible="false"
+                        searchButtonText="Виконати" resetButtonText="Відмінити" saveQueryMode="hidden"/>
+            </af:panelHeader>
+            <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+              <f:facet name="menus"/>
+              <f:facet name="toolbar">
+                <af:toolbar id="t1">
+                  <af:button id="b1" icon="/images/xlsx_24.png">
+                    <af:exportCollectionActionListener type="excelHTML" exportedId="resId1"/>
+                  </af:button>
+                </af:toolbar>
+              </f:facet>
+              <f:facet name="statusbar">
+                <af:toolbar id="t2">
+                  <af:outputText value="Записів:#{bindings.StudentsView1.estimatedRowCount}" id="ot9"
+                                 partialTriggers="::qryId1 resId1" inlineStyle="color:Maroon; font-weight:bold;"/>
+                </af:toolbar>
+              </f:facet>
+              <af:table value="#{bindings.StudentsView11.collectionModel}" var="row"
+                        rows="#{bindings.StudentsView11.rangeSize}"
+                        emptyText="#{bindings.StudentsView11.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        rowBandingInterval="0" selectedRowKeys="#{bindings.StudentsView11.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.StudentsView11.collectionModel.makeCurrent}" rowSelection="single"
+                        fetchSize="#{bindings.StudentsView11.rangeSize}"
+                        filterModel="#{bindings.SearchStudentsViewCriteriaQuery.queryDescriptor}"
+                        queryListener="#{bindings.SearchStudentsViewCriteriaQuery.processQuery}" filterVisible="true"
+                        varStatus="vs" id="resId1" styleClass="AFStretchWidth" columnStretching="column:resId1c3">
+                <af:column id="c1" width="14" rowHeader="true"/>
+                <af:column sortProperty="#{bindings.StudentsView11.hints.StudentId.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.StudentsView11.hints.StudentId.label}" id="resId1c1"
+                           width="50">
+                  <af:outputText value="#{row.StudentId}" shortDesc="#{bindings.StudentsView11.hints.StudentId.tooltip}"
+                                 id="ot1">
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.StudentsView11.hints.StudentId.format}"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.StudentsView11.hints.StudentName.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.StudentsView11.hints.StudentName.label}"
+                           id="resId1c2" width="200">
+                  <af:outputText value="#{row.StudentName}"
+                                 shortDesc="#{bindings.StudentsView11.hints.StudentName.tooltip}" id="ot2"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.StudentsView11.hints.StudentAddress.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.StudentsView11.hints.StudentAddress.label}"
+                           id="resId1c3">
+                  <af:outputText value="#{row.StudentAddress}"
+                                 shortDesc="#{bindings.StudentsView11.hints.StudentAddress.tooltip}" id="ot3"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.StudentsView11.hints.StudentDob.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.StudentsView11.hints.StudentDob.label}" id="resId1c4"
+                           width="200">
+                  <f:facet name="filter">
+                    <af:inputDate value="#{bindings.SearchStudentsViewCriteriaQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.StudentDob.value}"
+                                  id="id1">
+                      <af:convertDateTime pattern="#{bindings.StudentsView11.hints.StudentDob.format}"/>
+                    </af:inputDate>
+                  </f:facet>
+                  <af:outputText value="#{row.StudentDob}"
+                                 shortDesc="#{bindings.StudentsView11.hints.StudentDob.tooltip}" id="ot4">
+                    <af:convertDateTime pattern="#{bindings.StudentsView11.hints.StudentDob.format}"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.StudentsView11.hints.StudentParentName.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.StudentsView11.hints.StudentParentName.label}"
+                           id="resId1c5" width="200">
+                  <af:outputText value="#{row.StudentParentName}"
+                                 shortDesc="#{bindings.StudentsView11.hints.StudentParentName.tooltip}" id="ot5"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.StudentsView11.hints.StudentParentEmail.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.StudentsView11.hints.StudentParentEmail.label}"
+                           id="resId1c6">
+                  <af:outputText value="#{row.StudentParentEmail}"
+                                 shortDesc="#{bindings.StudentsView11.hints.StudentParentEmail.tooltip}" id="ot6"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.StudentsView11.hints.StudentParentPhone.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.StudentsView11.hints.StudentParentPhone.label}"
+                           id="resId1c7">
+                  <af:outputText value="#{row.StudentParentPhone}"
+                                 shortDesc="#{bindings.StudentsView11.hints.StudentParentPhone.tooltip}" id="ot7"/>
+                </af:column>
+                <af:column sortProperty="#{bindings.StudentsView11.hints.StudentGendar.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.StudentsView11.hints.StudentGendar.label}"
+                           id="resId1c8">
+                  <af:selectOneChoice value="#{row.bindings.StudentGendar.inputValue}"
+                                      label="#{row.bindings.StudentGendar.label}"
+                                      required="#{bindings.StudentsView11.hints.StudentGendar.mandatory}"
+                                      shortDesc="#{bindings.StudentsView11.hints.StudentGendar.tooltip}" readOnly="true"
+                                      id="soc1">
+                    <f:selectItems value="#{row.bindings.StudentGendar.items}" id="si1"/>
+                    <f:validator binding="#{row.bindings.StudentGendar.validator}"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column sortProperty="#{bindings.StudentsView11.hints.StudentCreatedDate.name}" filterable="true"
+                           sortable="true" headerText="#{bindings.StudentsView11.hints.StudentCreatedDate.label}"
+                           id="resId1c9">
+                  <f:facet name="filter">
+                    <af:inputDate value="#{bindings.SearchStudentsViewCriteriaQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.StudentCreatedDate.value}"
+                                  id="id2">
+                      <af:convertDateTime pattern="#{bindings.StudentsView11.hints.StudentCreatedDate.format}"/>
+                    </af:inputDate>
+                  </f:facet>
+                  <af:outputText value="#{row.StudentCreatedDate}"
+                                 shortDesc="#{bindings.StudentsView11.hints.StudentCreatedDate.tooltip}" id="ot8">
+                    <af:convertDateTime pattern="#{bindings.StudentsView11.hints.StudentCreatedDate.format}"/>
+                  </af:outputText>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          </af:panelGroupLayout>
+        </f:facet>
+        <f:attribute name="titleName" value="Пошук учня"/>
+      </af:pageTemplate>
+    </af:form>
+  </af:document>
+</f:view>

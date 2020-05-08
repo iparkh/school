@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="loginNew.jsf" id="d1">
+        <af:form id="f1">
+            <af:panelSplitter id="ps1" orientation="vertical">
+                <f:facet name="first">
+                    <af:panelGroupLayout id="pgl1" layout="vertical">
+                        <af:spacer width="10" height="10" id="s1"/>
+                        <af:panelGroupLayout id="pgl2" layout="vertical"/>
+                        <af:panelGroupLayout id="pgl3" layout="vertical"/>
+                    </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="second">
+                    <af:panelStretchLayout id="psl1">
+                        <f:facet name="bottom">
+                            <af:outputText value="outputText1" id="ot1"/>
+                        </f:facet>
+                        <f:facet name="center">
+                            <af:panelGroupLayout id="pgl4">
+                                <af:panelFormLayout id="pfl1">
+                                    <f:facet name="footer">
+                                        <af:button text="button 1" id="b1"/>
+                                    </f:facet>
+                                    <af:inputText label="Label 1" id="it1"/>
+                                    <af:inputText label="Label 2" id="it2"/>
+                                </af:panelFormLayout>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                        <f:facet name="start"/>
+                        <f:facet name="end"/>
+                        <f:facet name="top"/>
+                    </af:panelStretchLayout>
+                </f:facet>
+            </af:panelSplitter>
+        </af:form>
+    </af:document>
+</f:view>
